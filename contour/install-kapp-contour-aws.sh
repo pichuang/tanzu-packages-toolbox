@@ -1,5 +1,5 @@
 #!/bin/bash
-tanzu package install prometheus \
+tanzu package install contour \
 	--package-name contour.tanzu.vmware.com \
 	--namespace core-kapp \
 	--version 1.17.2+vmware.1-tkg.2 \
