@@ -1,4 +1,9 @@
 # Taznu Packages Toolbox
+
+## Fake Environment
+
+Domain: `.tanzu.local`
+
 ## Non kapp List
 - [x] krew
 - [x] kind

@@ -9,7 +9,7 @@ ST = Taipei
 L = TaipeiCity
 O = VMwareTaiwan
 OU = hphil
-CN = *.hphil.vmware.local
+CN = *.tanzu.local
 
 [ v3_req ]
 basicConstraints = CA:FALSE
@@ -21,7 +21,8 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always,issuer:always
 
 [alt_names]
-DNS.1 = hphil.vmware.local
-DNS.2 = *.hphil.vmware.local
-DNS.3 = vmware.local
-DNS.4 = *.vmware.local
+DNS.1 = harbor.tanzu.local
+DNS.2 = *.tanzu.local
+DNS.3 = tanzu.local
+DNS.4 = vmware.local
+DNS.5 = *.vmware.local
