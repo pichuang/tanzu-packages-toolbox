@@ -12,8 +12,10 @@
 - [x] prometheus.tanzu.vmware.com
 - [ ] contour.tanzu.vmware.com
 - [ ] grafana.tanzu.vmware.com
-- [ ] pinniped.tanzu.vmware.com
-- [ ] vsphere-csi.tanzu.vmware.com
+
+## Specific kapp list
+- [x] pinniped.tanzu.vmware.com
+- [x] vsphere-csi.tanzu.vmware.com
 
 ## Skip kapp list
 - vsphere-cpi.tanzu.vmware.com
