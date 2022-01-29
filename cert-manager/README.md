@@ -9,7 +9,7 @@ tanzu package available list cert-manager.tanzu.vmware.com -A
 ```
 - Retrieving package versions for cert-manager.tanzu.vmware.com...
   NAME                           VERSION               RELEASED-AT                    NAMESPACE
-  cert-manager.tanzu.vmware.com  1.1.0+vmware.2-tkg.1  2020-11-25 02:00:00 +0800 CST  tanzu-package-repo-global
+  cert-manager.tanzu.vmware.com  1.1.0+vmware.1-tkg.2  2020-11-25 02:00:00 +0800 CST  tanzu-package-repo-global
 ```
 
 ## Step 2: 安裝 cert-manager
@@ -17,23 +17,23 @@ tanzu package available list cert-manager.tanzu.vmware.com -A
 ```bash
 tanzu package install cert-manager \
     --package-name cert-manager.tanzu.vmware.com \
-    --version 1.1.0+vmware.2-tkg.1 \
-    --namespace vmw-kapp \
+    --version 1.1.0+vmware.1-tkg.2 \
+    --namespace tanzu-package-repo-global \
     --create-namespace
 ```
 
 - Output
 ```bash
-\ Installing package 'cert-manager.tanzu.vmware.com'
-/ Creating namespace 'vmw-kapp'
-- Getting package metadata for 'cert-manager.tanzu.vmware.com'
-\ Creating service account 'cert-manager-vmw-kapp-sa'
-| Creating cluster admin role 'cert-manager-vmw-kapp-cluster-role'
-| Creating cluster role binding 'cert-manager-vmw-kapp-cluster-rolebinding'
-\ Creating package resource
-/ Package install status: Reconciling
+- Installing package 'cert-manager.tanzu.vmware.com'
+| Creating namespace 'tanzu-package-repo-global'
+| Getting package metadata for 'cert-manager.tanzu.vmware.com'
+| Creating service account 'cert-manager-tanzu-package-repo-global-sa'
+| Creating cluster admin role 'cert-manager-tanzu-package-repo-global-cluster-role'
+| Creating cluster role binding 'cert-manager-tanzu-package-repo-global-cluster-rolebinding'
+- Creating package resource
+| Package install status: Reconciling
 
- Added installed package 'cert-manager' in namespace 'vmw-kapp'
+ Added installed package 'cert-manager' in namespace 'tanzu-package-repo-global'
 ```
 
 ## Step 3: 安裝後檢查 cert-manager
