@@ -2,7 +2,7 @@
 
 REPOSITORY_NAMESPACE="tanzu-package-repo-global"
 
-#kubectl apply -f https://github.com/vmware-tanzu/carvel-kapp-controller/releases/latest/download/release.yml
+# Online kubectl apply -f https://github.com/vmware-tanzu/carvel-kapp-controller/releases/latest/download/release.yml
 
 kubectl apply -f tanzu-system-kapp-ctrl-restricted.yaml
 kubectl apply -f kapp-controller.yaml

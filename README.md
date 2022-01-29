@@ -3,9 +3,9 @@
 ## Non kapp List
 - [x] krew
 - [x] kind
-- [x] kapp-controller
 
 ## Focus kapp List
+- [x] kapp-controller
 - [x] metrics-server.tanzu.vmware.com
 - [x] cert-manager.tanzu.vmware.com
 - [x] fluent-bit.tanzu.vmware.com
