@@ -1,7 +1,15 @@
+#@data/values
+---
+
+#! The namespace in which to deploy prometheus.
 namespace: tanzu-system-monitoring
+
 prometheus:
   deployment:
+    #! Number of prometheus servers
     replicas: 1
+
+    #! Replaces the prometheus-server container args with the ones provided below (i.e. Does not append).
     containers:
       args: []
       resources: {}
@@ -11,6 +19,7 @@ prometheus:
       containers:
         args: []
         resources: {}
+  #! Prometheus service configuration
   service:
     type: "ClusterIP"
     port: 80
@@ -22,6 +31,7 @@ prometheus:
     storageClassName: null
     accessMode: ReadWriteOnce
     storage: "150Gi"
+  #! The prometheus configuration
   config:
     prometheus_yml: |
       global:
@@ -639,6 +649,8 @@ prometheus:
       {}
     rules_yml: |
       {}
+
+
 ingress:
   enabled: false
   virtual_host_fqdn: "prometheus.system.tanzu"
@@ -646,17 +658,26 @@ ingress:
   alertmanager_prefix: "/alertmanager/"
   prometheusServicePort: 80
   alertmanagerServicePort: 80
+  #! [Optional] The certificate for the ingress if you want to use your own TLS certificate.
+  #! We will issue the certificate by cert-manager when it's empty.
   tlsCertificate:
+    #! [Required] the certificate
     tls.crt:
+    #! [Required] the private key
     tls.key:
+    #! [Optional] the CA certificate
     ca.crt:
+
 alertmanager:
   deployment:
+    #! The number of alert manager servers
     replicas: 1
     containers:
       resources: {}
     podAnnotations: {}
     podLabels: {}
+
+  #! AlertManager service configuration
   service:
     type: "ClusterIP"
     port: 80
@@ -668,6 +689,8 @@ alertmanager:
     storageClassName: null
     accessMode: ReadWriteOnce
     storage: "2Gi"
+
+  #! The alertmanager configuration. Note that alertmanager config is a kubernetes secret.
   config:
     alertmanager_yml: |
       global: {}
@@ -680,6 +703,7 @@ alertmanager:
         group_wait: 10s
         receiver: default-receiver
         repeat_interval: 3h
+
 kube_state_metrics:
   deployment:
     replicas: 1
@@ -687,6 +711,7 @@ kube_state_metrics:
       resources: {}
     podAnnotations: {}
     podLabels: {}
+  #! kube-state-metrics service configuration
   service:
     type: "ClusterIP"
     port: 80
@@ -695,6 +720,7 @@ kube_state_metrics:
     telemetryTargetPort: 8081
     labels: {}
     annotations: {}
+
 node_exporter:
   daemonset:
     hostNetwork: false
@@ -703,12 +729,16 @@ node_exporter:
       resources: {}
     podAnnotations: {}
     podLabels: {}
+
+  #! node-exporter service configuration
   service:
     type: "ClusterIP"
     port: 9100
     targetPort: 9100
     labels: {}
     annotations: {}
+
+
 pushgateway:
   deployment:
     replicas: 1
@@ -716,12 +746,15 @@ pushgateway:
       resources: {}
     podAnnotations: {}
     podLabels: {}
+
+  #! pushgateway service configuration
   service:
     type: "ClusterIP"
     port: 9091
     targetPort: 9091
     labels: {}
     annotations: {}
+
 cadvisor:
   daemonset:
     updatestrategy: RollingUpdate
