@@ -8,11 +8,11 @@
 ## Focus kapp List
 - [x] metrics-server.tanzu.vmware.com
 - [x] cert-manager.tanzu.vmware.com
+- [x] fluent-bit.tanzu.vmware.com
 - [x] prometheus.tanzu.vmware.com
-- [ ] grafana.tanzu.vmware.com
-- [ ] fluent-bit.tanzu.vmware.com
-- [ ] pinniped.tanzu.vmware.com
 - [ ] contour.tanzu.vmware.com
+- [ ] grafana.tanzu.vmware.com
+- [ ] pinniped.tanzu.vmware.com
 - [ ] vsphere-csi.tanzu.vmware.com
 
 ## Skip kapp list
