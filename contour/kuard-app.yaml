@@ -40,7 +40,7 @@ metadata:
   name: kuard
   annotations:
     kubernetes.io/ingress.class: "contour"
-    cert-manager.io/cluster-issuer: "localca-issuer"
+    cert-manager.io/cluster-issuer: "tanzu-local-issuer"
 spec:
   defaultBackend:
     service:
@@ -48,7 +48,7 @@ spec:
       port:
         number: 80
   rules:
-  - host: kuard.hphil.vmware.local
+  - host: kuard.tanzu.local
     http:
       paths:
       - path: /
@@ -60,5 +60,5 @@ spec:
               number: 80
   tls:
   - hosts:
-    - kuard.hphil.vmware.local
-    secretName: kuard-cert
+    - kuard.tanzu.local
+    secretName: tanzu-local-ca-secret

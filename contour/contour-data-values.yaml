@@ -11,15 +11,15 @@ envoy:
     type: NodePort
     annotations: {}
     nodePorts:
-      http: null
-      https: null
+      http: 30080
+      https: 30443
     externalTrafficPolicy: Cluster
     disableWait: false
   hostPorts:
-    enable: true
+    enable: false
     http: 80
     https: 443
-  hostNetwork: false
+  hostNetwork: true
   terminationGracePeriodSeconds: 300
   logLevel: info
   pspNames: null

@@ -88,7 +88,7 @@ ls -la
 ## Step 4: 將憑證放入 Cert-manager
 - Input:
 ```bash
-kubectl create secret tls local-ca-secret \
+kubectl create secret tls tanzu-local-ca-secret \
     --key localca.selfsign.key \
     --cert localRootCA.pem \
     -n cert-manager
@@ -97,18 +97,18 @@ cat <<EOF | kubectl apply -f -
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: localca-issuer
+  name: tanzu-local-issuer
   namespace: cert-manager
 spec:
   ca:
-    secretName: local-ca-secret
+    secretName: tanzu-local-ca-secret
 EOF
 ```
 
 - Output
 ```
-secret/local-ca-secret created
-clusterissuer.cert-manager.io/localca-issuer created
+secret/tanzu-local-ca-secret created
+clusterissuer.cert-manager.io/tanzu-local-issuer created
 ```
 
 ## (Optional) 移除 cert-manager

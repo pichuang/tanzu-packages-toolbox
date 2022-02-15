@@ -1,0 +1,17 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: kuard-ingress-service
+  namespace: kuard
+spec:
+  virtualhost:
+    fqdn: kuard.tanzu.local
+    tls:
+      secretName: tanzu-local-ca-secret
+  routes:
+  - services:
+    - name: kuard
+      port: 80
+    conditions:
+      - prefix: /
+

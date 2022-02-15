@@ -123,7 +123,7 @@ tanzu-worker2         Ready    <none>   91m   v1.19.1   172.16.217.133   <none> 
 $ kubectl create ns kuard
 namespace/kuard created
 
-$ kubectl apply -f kuard-app.yaml
+$ kubectl apply -f kuard-app.yaml -n kuard
 deployment.apps/kuard created
 service/kuard created
 ingress.networking.k8s.io/kuard created
@@ -148,7 +148,6 @@ $ curl 172.16.217.131:80
 $ curl 172.16.217.133:80
 
 ```
-
 
 - [Ingress, SSL and DNS using TKG 1.4 Packages on TKGs Clusters](https://www.definit.co.uk/2021/12/ingress-ssl-and-dns-using-tkg-1.4-packages-on-tkgs-clusters/)
 

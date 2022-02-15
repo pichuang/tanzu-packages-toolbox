@@ -32,3 +32,7 @@ Domain: `.tanzu.local`
 - antrea.tanzu.vmware.com
 - ako-operator.tanzu.vmware.com
 - addons-manager.tanzu.vmware.com
+
+## Unsupported
+- [ ] stakater/Reloader
+- [ ] kube-ops-view https://codeberg.org/hjacobs/kube-ops-view
