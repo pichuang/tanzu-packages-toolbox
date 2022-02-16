@@ -1,0 +1,12 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: PackageMetadata
+metadata:
+  name: core.hphil.tanzu.vmware.com
+spec:
+  displayName: tkg-core
+  longDescription: Core packages for TKG
+  shortDescription: Core packages for TKG
+  providerName: TKG Provider
+  maintainers:
+  - name: Phil Huang
+  supportDescription: "Self Support https://github.com/pichuang/tanzu-packages-toolbox"

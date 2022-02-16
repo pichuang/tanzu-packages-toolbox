@@ -1,0 +1,8 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: cert-manager
+spec:
+  packageRef:
+    refName: cert-manager.tanzu.vmware.com
+  serviceAccountName: core-default-sa
