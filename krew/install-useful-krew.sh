@@ -17,6 +17,7 @@ kubectl krew install doctor
 kubectl krew install resource-capacity
 kubectl krew install df-pv
 kubectl krew install view-secret
+kubectl krew install neat
 kubectl krew index add kvaps https://github.com/kvaps/krew-index
 kubectl krew install kvaps/node-shell
 
