@@ -142,3 +142,11 @@ node_exporter, version  (branch: , revision: )
 
 https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.4/vmware-tanzu-kubernetes-grid-14/GUID-packages-prometheus.html#review-configuration-parameters-9
 
+## Scrape Configs
+- [etcd](https://etcd.io/docs/v3.5/op-guide/monitoring/#prometheus)
+  - grafana https://grafana.com/grafana/dashboards/3070
+- [contour](https://projectcontour.io/guides/prometheus/)
+- [harbor](https://goharbor.io/docs/2.4.0/administration/metrics/)
+- [fluentbit](https://hulining.gitbook.io/fluentbit/administration/monitoring)
+
+

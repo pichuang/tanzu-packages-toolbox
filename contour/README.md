@@ -13,6 +13,9 @@ tanzu package available list contour.tanzu.vmware.com -A
 | Retrieving package versions for contour.tanzu.vmware.com...
   NAME                      VERSION                RELEASED-AT                    NAMESPACE
   contour.tanzu.vmware.com  1.17.1+vmware.1-tkg.1  2021-07-24 02:00:00 +0800 CST  tanzu-package-repo-global
+  contour.tanzu.vmware.com  1.17.2+vmware.1-tkg.2  2021-07-24 02:00:00 +0800 CST  tanzu-package-repo-global
+  contour.tanzu.vmware.com  1.17.2+vmware.1-tkg.3  2021-07-24 02:00:00 +0800 CST  tanzu-package-repo-global
+  contour.tanzu.vmware.com  1.18.2+vmware.1-tkg.1  2021-10-05 08:00:00 +0800 CST  tanzu-package-repo-global
 ```
 
 ## Step 2: 安裝 contour
@@ -20,11 +23,12 @@ tanzu package available list contour.tanzu.vmware.com -A
 ```bash
 tanzu package install contour \
     --package-name contour.tanzu.vmware.com \
-    --version 1.17.1+vmware.1-tkg.1 \
+    --version 1.18.2+vmware.1-tkg.1 \
     --namespace tanzu-package-repo-global \
     --values-file contour-data-values.yaml \
     --create-namespace
 ```
+- https://github.com/vmware-tanzu/community-edition/tree/main/addons/packages/contour#usage-example
 
 - Error Output
 ```
@@ -52,11 +56,11 @@ Error: package reconciliation failed: kapp: Error: Expected to find kind 'cert-m
 - Input
 ```bash
 tanzu package installed update contour \
-    --version 1.17.1+vmware.1-tkg.1 \
+    --version 1.18.2+vmware.1-tkg.1 \
     --namespace tanzu-package-repo-global \
     --values-file contour-data-values.yaml
 ```
-
+- https://github.com/vmware-tanzu/community-edition/tree/main/addons/packages/contour#usage-example
 
 ## Step 3: 安裝後檢查 contour
 - Input
@@ -66,26 +70,55 @@ kubectl get all -n tanzu-system-ingress
 
 - Output
 ```
-NAME                                              READY   STATUS    RESTARTS   AGE
 NAME                           READY   STATUS    RESTARTS   AGE
-pod/contour-5866d5dfcf-ngj7r   1/1     Running   0          94s
-pod/contour-5866d5dfcf-zd786   1/1     Running   0          94s
-pod/envoy-cl9kg                2/2     Running   0          94s
-pod/envoy-hwj84                2/2     Running   0          94s
+pod/contour-565b8b6765-sdx4r   1/1     Running   0          101s
+pod/envoy-mbbql                2/2     Running   0          102s
 
-NAME              TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                      AGE
-service/contour   ClusterIP   20.20.29.0    <none>        8001/TCP                     94s
-service/envoy     NodePort    20.20.62.84   <none>        80:32188/TCP,443:30832/TCP   94s
+NAME              TYPE        CLUSTER-IP        EXTERNAL-IP   PORT(S)                      AGE
+service/contour   ClusterIP   100.102.250.214   <none>        8001/TCP                     101s
+service/envoy     NodePort    100.97.117.94     <none>        80:30451/TCP,443:30293/TCP   101s
 
 NAME                   DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
-daemonset.apps/envoy   2         2         2       2            2           <none>          94s
+daemonset.apps/envoy   1         1         1       1            1           <none>          102s
 
 NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/contour   2/2     2            2           94s
+deployment.apps/contour   1/1     1            1           101s
 
 NAME                                 DESIRED   CURRENT   READY   AGE
-replicaset.apps/contour-5866d5dfcf   2         2         2       94s
+replicaset.apps/contour-565b8b6765   1         1         1       101s
 ```
+
+
+```bash
+kubectl create namespace contour-example-workload
+kubectl create deployment nginx-example --image nginx --namespace contour-example-workload
+kubectl create service clusterip nginx-example --tcp 80:80 --namespace contour-example-workload
+kubectl apply -f - <<EOF
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: nginx-example-proxy
+  namespace: contour-example-workload
+  labels:
+    app: ingress
+spec:
+  virtualhost:
+    fqdn: nginx-example.projectcontour.io
+  routes:
+  - conditions:
+    - prefix: /
+    services:
+    - name: nginx-example
+      port: 80
+EOF
+
+kubectl get service envoy -n tanzu-system-ingress
+
+```
+
+
+
+
 
 ## (Optional) Access the Envoy Administration Interface Remotely
 ```
@@ -155,4 +188,11 @@ $ curl 172.16.217.133:80
 ## (Optioanl) 移除 contour
 ```bash
 tanzu package installed delete contour -n tanzu-package-repo-global
+```
+
+## 拉取 contour 設定檔
+```bash
+image_url=$(kubectl -n tanzu-package-repo-global get packages contour.tanzu.vmware.com.1.18.2+vmware.1-tkg.1 -o jsonpath='{.spec.template.spec.fetch[0].imgpkgBundle.image}')
+echo $image_url
+imgpkg pull -b $image_url -o /tmp/contour
 ```

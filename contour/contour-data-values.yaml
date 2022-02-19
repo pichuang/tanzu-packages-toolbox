@@ -1,9 +1,10 @@
+---
 infrastructure_provider: vsphere
 namespace: tanzu-system-ingress
 contour:
   configFileContents: {}
-  useProxyProtocol: true
-  replicas: 2
+  useProxyProtocol: false
+  replicas: 1
   pspNames: "vmware-system-restricted"
   logLevel: info
 envoy:
@@ -11,15 +12,17 @@ envoy:
     type: NodePort
     annotations: {}
     nodePorts:
-      http: 30080
-      https: 30443
+      http: null
+      https: null
     externalTrafficPolicy: Cluster
+    aws:
+      LBType: classic
     disableWait: false
   hostPorts:
-    enable: false
+    enable: true
     http: 80
     https: 443
-  hostNetwork: true
+  hostNetwork: false
   terminationGracePeriodSeconds: 300
   logLevel: info
   pspNames: null
