@@ -9,12 +9,10 @@ Domain: `.tanzu.local`
 - [x] kind
 
 ## Focus kapp List
-- [x] kapp-controller
-- [x] metrics-server.tanzu.vmware.com
 - [x] cert-manager.tanzu.vmware.com
+- [ ] contour.tanzu.vmware.com
 - [x] fluent-bit.tanzu.vmware.com
 - [x] prometheus.tanzu.vmware.com
-- [ ] contour.tanzu.vmware.com
 - [ ] grafana.tanzu.vmware.com
 
 ## Specific kapp list
@@ -22,6 +20,8 @@ Domain: `.tanzu.local`
 - [x] vsphere-csi.tanzu.vmware.com
 
 ## Skip kapp list
+- kapp-controller
+- metrics-server.tanzu.vmware.com
 - vsphere-cpi.tanzu.vmware.com
 - multus-cni.tanzu.vmware.com
 - load-balancer-and-ingress-service.tanzu.vmware.com
