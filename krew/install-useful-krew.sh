@@ -20,4 +20,4 @@ kubectl krew install view-secret
 kubectl krew install neat
 kubectl krew index add kvaps https://github.com/kvaps/krew-index
 kubectl krew install kvaps/node-shell
-
+kubectl krew install pod-lens
