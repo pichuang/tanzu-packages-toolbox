@@ -7,9 +7,10 @@ tanzu package available list prometheus.tanzu.vmware.com -A
 
 - Output
 ```
-\ Retrieving package versions for prometheus.tanzu.vmware.com...
+- Retrieving package versions for prometheus.tanzu.vmware.com...
   NAME                         VERSION                RELEASED-AT                    NAMESPACE
   prometheus.tanzu.vmware.com  2.27.0+vmware.1-tkg.1  2021-05-13 02:00:00 +0800 CST  tanzu-package-repo-global
+  prometheus.tanzu.vmware.com  2.27.0+vmware.2-tkg.1  2021-05-13 02:00:00 +0800 CST  tanzu-package-repo-global
 ```
 
 ## Step 2: 安裝 prometheus
@@ -17,23 +18,15 @@ tanzu package available list prometheus.tanzu.vmware.com -A
 ```bash
 tanzu package install prometheus \
     --package-name prometheus.tanzu.vmware.com \
-    --version 2.27.0+vmware.1-tkg.1 \
-    --namespace tanzu-package-repo-global \
+    --version  2.27.0+vmware.2-tkg.1 \
+    --namespace tanzu-system-monitoring \
     --create-namespace
 ```
+- https://github.com/vmware-tanzu/community-edition/tree/main/addons/packages/prometheus/2.27.0
 
 - Output
 ```bash
-- Installing package 'prometheus.tanzu.vmware.com'
-| Creating namespace 'tanzu-package-repo-global'
-| Getting package metadata for 'prometheus.tanzu.vmware.com'
-| Creating service account 'prometheus-tanzu-package-repo-global-sa'
-| Creating cluster admin role 'prometheus-tanzu-package-repo-global-cluster-role'
-| Creating cluster role binding 'prometheus-tanzu-package-repo-global-cluster-rolebinding'
-- Creating package resource
-- Package install status: Reconciling
 
- Added installed package 'prometheus' in namespace 'tanzu-package-repo-global'
 ```
 
 ## Step 3: 安裝後檢查 prometheus
@@ -79,7 +72,7 @@ replicaset.apps/prometheus-pushgateway-64f6d4f674          1         1         1
 replicaset.apps/prometheus-server-7b6985bbcf               1         1         1       2m18s
 ```
 
-## (Optional) 測試 Prometheus Service in tanzu-system-monitoring
+## 測試 Prometheus Service in tanzu-system-monitoring
 ```bash
 # 開啟一個 debug-container
 $ kubectl run -n tanzu-system-monitoring debug-container --rm -i --tty --image docker.io/nicolaka/netshoot -- /bin/bash
@@ -101,11 +94,34 @@ bash-5.1$ curl prometheus-server.tanzu-system-monitoring:80
 <a href="/graph">Found</a>.
 ```
 
+
+## Debug
+```bash
+kubectl get pods alertmanager-59fd7b5d7d-ckzxm
+kubectl debug -it alertmanager-6d54cd84b6-7bcb5 --image=busybox --share-processes --copy-to=some-app-debug
+```
+
+
+- https://towardsdatascience.com/the-easiest-way-to-debug-kubernetes-workloads-ff2ff5e3cc75
+
 ## (Optioanl) 移除 prometheus
 ```bash
 tanzu package installed delete prometheus -n tanzu-package-repo-global
 ```
 
+
+## Q&A
+### Q1
+```bash
+level=error ts=2022-02-19T19:13:06.126Z caller=main.go:246 msg="unable to initialize gossip mesh" err="create memberlist: Failed to get final advertise address: No private IP address found, and explicit IP not provided"
+```
+
+A1:
+https://www.796t.com/article.php?id=420380
+
+```
+--cluster.advertise-address=0.0.0.0:9093
+```
 
 ## 版本資訊
 PACKAGE-VERSION: 2.27.0+vmware.1-tkg.1
