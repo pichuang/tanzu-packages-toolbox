@@ -11,6 +11,7 @@ kubectl krew install grep
 kubectl krew install iexec
 kubectl krew install tree
 kubectl krew install view-utilization
+kubectl krew install view-allocations
 kubectl krew install tail
 kubectl krew install access-matrix
 kubectl krew install doctor
