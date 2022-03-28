@@ -38,6 +38,13 @@ docker-compose --version
 # sudo usermod -aG docker <USER>
 sudo usermod -aG docker pichuang
 
+# Install kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install kubectl /usr/local/bin/kubectl
+rm kubectl
+
+# install kind
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.12.0/kind-linux-amd64
 chmod +x ./kind
 sudo install kind /usr/local/bin/
+rm kind
