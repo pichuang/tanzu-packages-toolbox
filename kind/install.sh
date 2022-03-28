@@ -40,4 +40,4 @@ sudo usermod -aG docker pichuang
 
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.12.0/kind-linux-amd64
 chmod +x ./kind
-install ./kind /usr/local/bin/
+sudo install kind /usr/local/bin/
