@@ -12,8 +12,8 @@ echo "Waiting 60 sec"
 sleep 60
 
 kubectl create ns $REPOSITORY_NAMESPACE
-tanzu package repository add tanzu-standard -n $REPOSITORY_NAMESPACE --url projects.registry.vmware.com/tkg/packages/standard/repo:v1.4.0
-tanzu package repository add tanzu-core -n $REPOSITORY_NAMESPACE --url projects.registry.vmware.com/tkg/packages/core/repo:v1.21.2_vmware.1-tkg.1
+tanzu package repository add tanzu-standard -n $REPOSITORY_NAMESPACE --url projects.registry.vmware.com/tkg/packages/standard/repo:v1.5.2
+tanzu package repository add tanzu-core -n $REPOSITORY_NAMESPACE --url projects.registry.vmware.com/tkg/packages/core/repo:v1.21.8_vmware.1-tkg.5
 
 echo "Waiting 60 sec"
 sleep 60
