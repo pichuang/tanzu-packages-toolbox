@@ -11,12 +11,14 @@ kubectl krew install grep
 kubectl krew install iexec
 kubectl krew install tree
 kubectl krew install view-utilization
+kubectl krew install view-allocations
 kubectl krew install tail
 kubectl krew install access-matrix
 kubectl krew install doctor
 kubectl krew install resource-capacity
 kubectl krew install df-pv
 kubectl krew install view-secret
+kubectl krew install neat
 kubectl krew index add kvaps https://github.com/kvaps/krew-index
 kubectl krew install kvaps/node-shell
-
+kubectl krew install pod-lens

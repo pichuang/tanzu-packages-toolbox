@@ -1,0 +1,84 @@
+- display-name: cert-manager
+  latest-version: 1.5.3+vmware.2-tkg.1
+  name: cert-manager.tanzu.vmware.com
+  short-description: Certificate management
+- display-name: contour
+  latest-version: 1.18.2+vmware.1-tkg.1
+  name: contour.tanzu.vmware.com
+  short-description: An ingress controller
+- display-name: external-dns
+  latest-version: 0.10.0+vmware.1-tkg.1
+  name: external-dns.tanzu.vmware.com
+  short-description: This package provides DNS synchronization functionality.
+- display-name: fluent-bit
+  latest-version: 1.7.5+vmware.2-tkg.1
+  name: fluent-bit.tanzu.vmware.com
+  short-description: Fluent Bit is a fast Log Processor and Forwarder
+- display-name: grafana
+  latest-version: 7.5.7+vmware.2-tkg.1
+  name: grafana.tanzu.vmware.com
+  short-description: Visualization and analytics software
+- display-name: harbor
+  latest-version: 2.3.3+vmware.1-tkg.1
+  name: harbor.tanzu.vmware.com
+  short-description: OCI Registry
+- display-name: multus-cni
+  latest-version: 3.7.1+vmware.2-tkg.2
+  name: multus-cni.tanzu.vmware.com
+  short-description: This package provides the ability for enabling attaching multiple
+    network interfaces to pods in Kubernetes
+- display-name: prometheus
+  latest-version: 2.27.0+vmware.2-tkg.1
+  name: prometheus.tanzu.vmware.com
+  short-description: A time series database for your metrics
+- display-name: tanzu-addons-manager
+  latest-version: 1.5.0+vmware.1-tkg.3
+  name: addons-manager.tanzu.vmware.com
+  short-description: This package provides TKG addons lifecycle management capabilities.
+- display-name: ako-operator
+  latest-version: 1.5.0+vmware.4-tkg.1
+  name: ako-operator.tanzu.vmware.com
+  short-description: NSX Advanced Load Balancer using ako-operator
+- display-name: antrea
+  latest-version: 1.2.3+vmware.4-tkg.1-advanced
+  name: antrea.tanzu.vmware.com
+  short-description: networking and network security solution for containers
+- display-name: calico
+  latest-version: 3.19.1+vmware.1-tkg.3
+  name: calico.tanzu.vmware.com
+  short-description: Networking and network security solution for containers.
+- display-name: kapp-controller
+  latest-version: 0.30.0+vmware.1-tkg.1
+  name: kapp-controller.tanzu.vmware.com
+  short-description: Kubernetes package manager
+- display-name: load-balancer-and-ingress-service
+  latest-version: 1.6.1+vmware.2-tkg.3
+  name: load-balancer-and-ingress-service.tanzu.vmware.com
+  short-description: Provides L4+L7 load balancing for TKG clusters running on vSphere
+- display-name: metrics-server
+  latest-version: 0.5.1+vmware.1-tkg.1
+  name: metrics-server.tanzu.vmware.com
+  short-description: Metrics Server is a scalable, efficient source of container resource
+    metrics for Kubernetes built-in autoscaling pipelines.
+- display-name: pinniped
+  latest-version: 0.12.0+vmware.1-tkg.1
+  name: pinniped.tanzu.vmware.com
+  short-description: Pinniped provides identity services to Kubernetes.
+- display-name: secretgen-controller
+  latest-version: 0.7.1+vmware.1-tkg.1
+  name: secretgen-controller.tanzu.vmware.com
+  short-description: Secret generation and sharing
+- display-name: vsphere-cpi
+  latest-version: 1.22.4+vmware.1-tkg.1
+  name: vsphere-cpi.tanzu.vmware.com
+  short-description: vSphere Cloud Provider Interface
+- display-name: vsphere-csi
+  latest-version: 2.4.1+vmware.1-tkg.1
+  name: vsphere-csi.tanzu.vmware.com
+  short-description: vSphere CSI provider
+- name: tanzu-core
+  reason: ""
+  repository: projects.registry.vmware.com/tkg/packages/core/repo
+  status: Reconcile succeeded
+  tag: v1.22.5_vmware.1-tkg.3
+  version: "322204"

@@ -1,0 +1,39 @@
+- display-name: cert-manager
+  latest-version: 1.5.3+vmware.2-tkg.1
+  name: cert-manager.tanzu.vmware.com
+  short-description: Certificate management
+- display-name: contour
+  latest-version: 1.18.2+vmware.1-tkg.1
+  name: contour.tanzu.vmware.com
+  short-description: An ingress controller
+- display-name: external-dns
+  latest-version: 0.10.0+vmware.1-tkg.1
+  name: external-dns.tanzu.vmware.com
+  short-description: This package provides DNS synchronization functionality.
+- display-name: fluent-bit
+  latest-version: 1.7.5+vmware.2-tkg.1
+  name: fluent-bit.tanzu.vmware.com
+  short-description: Fluent Bit is a fast Log Processor and Forwarder
+- display-name: grafana
+  latest-version: 7.5.7+vmware.2-tkg.1
+  name: grafana.tanzu.vmware.com
+  short-description: Visualization and analytics software
+- display-name: harbor
+  latest-version: 2.3.3+vmware.1-tkg.1
+  name: harbor.tanzu.vmware.com
+  short-description: OCI Registry
+- display-name: multus-cni
+  latest-version: 3.7.1+vmware.2-tkg.2
+  name: multus-cni.tanzu.vmware.com
+  short-description: This package provides the ability for enabling attaching multiple
+    network interfaces to pods in Kubernetes
+- display-name: prometheus
+  latest-version: 2.27.0+vmware.2-tkg.1
+  name: prometheus.tanzu.vmware.com
+  short-description: A time series database for your metrics
+- name: tanzu-standard
+  reason: ""
+  repository: projects.registry.vmware.com/tkg/packages/standard/repo
+  status: Reconcile succeeded
+  tag: v1.5.0
+  version: "320489"

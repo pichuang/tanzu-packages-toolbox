@@ -1,0 +1,50 @@
+#!/bin/bash
+
+sudo timedatectl set-timezone Asia/Taipei
+sudo apt update
+sudo apt install chrony -y
+sudo systemctl start chronyd
+sudo systemctl status chronyd
+sudo timedatectl set-ntp true
+sudo systemctl restart chronyd
+chronyc activity
+
+# https://docs.docker.com/engine/install/ubuntu/
+# Update the apt package index and install packages to allow apt to use a repository over HTTPS
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+# Add Docker’s official GPG key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# Use the following command to set up the stable repository.
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Update the apt package index, and install the latest version of Docker Engine and containerd, or go to the next step to install a specific version
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+# Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+# sudo usermod -aG docker <USER>
+sudo usermod -aG docker pichuang
+
+# Install kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install kubectl /usr/local/bin/kubectl
+rm kubectl
+
+# install kind
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.12.0/kind-linux-amd64
+chmod +x ./kind
+sudo install kind /usr/local/bin/
+rm kind
